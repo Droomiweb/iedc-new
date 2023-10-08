@@ -7,20 +7,61 @@ font-family: 'Roboto', sans-serif; */
     padding: 0;
     margin: 0;
     font-family: 'Oswald', sans-serif;
-    box-sizing: border-box;
 }
+
 body{
     scroll-behavior: smooth;
     scrollbar-width: none;
+    width: 100%;
+    box-sizing: border-box;
 }
 a,a:focus,a:active{
     text-decoration: none;
 }
+.toggle-sw{
+    position: fixed;
+    display: inline-block;
+    top: 5%;
+    right: 10%;
+    height: 4rem;
+    z-index: 70;
+    visibility: hidden;
+    text-align: right;
+    color: #fff;
+}
+header .mob-nav h2{
+    font-size: 2.5rem;
+    position: relative;
+    transform: translate(-7rem , -1.6rem);
+}
+header .mob-nav #close{
+    display: inline-block;
+}
 header .mob-nav{
     position: fixed;
+    right: 0;
     height: 4rem;
-    z-index: 30;
+    z-index: 70;
     display: none;
+    text-align: right;
+    background: #fff;
+    height: 100vh;
+    width: 40%;
+    padding-right: 10%;
+    padding-top: 10%;
+    font-size: 1.5rem;
+    transform: translateX(200px);
+    transition: 0.2s;
+    backdrop-filter:blur(10px);
+}
+header .mob-nav ul{
+    list-style: none;
+}
+header .mob-nav ul li a{
+    color: #000;
+}
+header .mob-nav ul li{
+    margin-top: 10px;
 }
 header .mob-nav i{
     position: relative;
@@ -365,30 +406,95 @@ header .com-nav .navL:hover::after{
 /* --------------------------------mobile----------------------------- */
 
 @media(max-width : 700px){
-
-
+    *{
+        box-sizing: unset;
+    }
+ 
     header .com-nav{
         display: none;
     }
-    .iedc{
-       visibility: hidden;
+    .iedc p{
+        display: none;
+    }
+    .iedc::before{
+        content: "";
+        position: relative;
+        display: none;
+        width: 0px;
+        transform: translate(0);
+        height: 0%;
+        background:#fff;
+        z-index: 20;
     }
     header .mob-nav{
         display: block;
     }
-   
+    .toggle-sw{
+        visibility: visible;
+        font-size: 2rem;
+    }
+
+   .main{
+    overflow-x: hidden;
+
+   }
     .main .about{
+        margin-top: 80vh;
         width: 20rem;
     }
     .main .events .slider{
         width: 20rem;
     }
+    .carousel-item{
+        width: 20rem;
+        height: 15rem;
+    }
+    .join::before{
+        content: "IEDC";
+        font-size: 5rem;
+        margin-bottom: 2rem;
+    }
+    .join{
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        display: inline-block;
+        z-index: 50;
+    }
     .contact div{
         font-size: 1rem;
     }
+  
+
     .excom .officer {
-        scale: 0.8;
+        width: 20rem;
+        height: 10rem;
+        margin: 1rem;
+        padding: 0.4rem;
     }
+    .excom .officer:nth-child(even){
+        flex-direction: row-reverse;
+    }
+    .excom .officer .img-con{
+        width: 7rem;
+        height: 7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+    .excom .officer h2{
+        font-size: 1.3rem;
+    }
+    .excom .officer .img-con img{
+        width: 8rem;
+        height: 7rem;
+        object-fit:contain;
+    }
+
+
     .leads {
         grid-template-columns: 1fr 1fr;
         scale: 0.9;
@@ -400,20 +506,58 @@ header .com-nav .navL:hover::after{
         padding: 5px;
     }
     .leads .officer img{
-        object-fit: cover;
         width: 100%;
         height: 15rem;
     }
     .leads .officer .img-con{
         padding: 0;
+        width: 100%;
         height: 15rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .event-dtl{
-        grid-gap: 0;
-        grid-template-columns: 1fr 1fr;
+        display: grid;
+        grid-gap: 0.1rem;
+        grid-template-columns: 1fr;
+        margin-bottom: 0rem;
+    }
+    .event-dtl .item{
+        scale: 0.8;
+        text-align: center;
     }
     .event-dtl .ev{
-        width: 100%;
-        margin: 1rem;
+        border: 1px solid #000;
+        border-radius: 20px;
+        padding: 1rem;
+        width: fit-content;
+    }
+    .ev .disc{
+        font-size: 0.7rem;
+    }
+    .ev h4{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    .events .posts{
+        display: grid;
+        grid-template-columns:1fr;
+        margin: 0 1rem;
+    }
+    .events .posts .post{
+        height: 15rem;
+    }
+    .events .posts .post .img-con{
+        width: 20rem;
+        height: 15rem;
+        border-radius: 10px;
+    }
+    .events .posts .post .img-con img{
+        width: 20rem;
+        height: 15rem;
+        object-fit: contain;
+        border-radius: 10px;
     }
 }

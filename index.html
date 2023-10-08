@@ -13,7 +13,7 @@
 <body>
 <!-- ----------------------------header----------------------- -->
 <header>
-    <nav class="com-nav">
+    <nav class="com-nav nav-h">
         <ul>
             <li>
                 <a class="navL" href="#about">ABOUT</a>
@@ -30,21 +30,24 @@
             </li>
         </ul>
    </nav>
-   <nav class="mob-nav">
-    <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
+
+   <i id="nav-open" class="fa-solid fa-bars toggle-sw" ></i>
+
+   <nav id="mob-nav" class="mob-nav nav-h">
+   <h2 id="close">x</h2>
     <ul>
         <li>
-            <a class="navL" href="#about">ABOUT</a>
+            <a  href="#about">ABOUT</a>
         </li>
         <li>
-            <a class="navL" href="#excom">EXCOM</a>
+            <a href="#excom">EXCOM</a>
         </li>
         <li>
-            <a class="navL" href="#events">EVENTS</a>
+            <a href="#events">EVENTS</a>
         </li>
 
         <li>
-            <a class="navL" href="#contact">CONTACT</a>
+            <a href="#contact">CONTACT</a>
         </li>
     </ul>
    </nav>
@@ -61,7 +64,7 @@
 </div>
 <div class="join mega align-center" data-paroller-factor="0.1" data-paroller-type="foreground">
     <h2>College Of Applied Science<br>Chelakkara (IHRD)</h2>
-    <a href="#">Join With Us</a>
+    <a href="https://chat.whatsapp.com/KwspngKebUh2Cf3ADIxXzB">Join With Us</a>
 </div>
 </header>
 <!-- ----------------------------header end----------------------- -->
@@ -355,7 +358,7 @@ The concept of Innovation and Entrepreneurship Development Centre (IEDC) is form
     <h1 class="head"><u>CONTACT</u></h1>
    <div>
     <i class="fa-solid fa-envelope" style="color: #000000;"></i>
-    <a href="mailto:casciedc@gmail.com">mailto:casciedc@gmail.com</a>
+    <a href="mailto:casciedc@gmail.com">casciedc@gmail.com</a>
    </div>
 </section>
 <!-- ----------------------------contact end---------------------- -->
@@ -373,23 +376,29 @@ The concept of Innovation and Entrepreneurship Development Centre (IEDC) is form
 <script>
     window.addEventListener('scroll',function(){
         var scroll= window.scrollY;
-        console.log(scroll)
-        if(scroll >=10){
-           var nav=  document.querySelector("nav").style;
-           var amt=0
-           if(amt <=5 && amt >= 0 ) {amt = 0.1*scroll}
-            nav.backdropFilter = "blur("+amt+"px)"
+        
+        if (scroll >= 10) {
+            var nav = document.querySelector(".nav-h").style;
+            var amt = 0
+            if (amt < 10) {
+                amt = scroll/100
+                console.log(amt)
+                nav.backdropFilter = "blur(" + amt + "px)"
+            }else{
+                amt=0
+            }
         }
         
         if(scroll >=700){ 
              var elements = document.getElementsByClassName('navL'), i, len;
-
+            var bar = document.querySelector(".toggle-sw").style.color = "black"
             for (i = 0, len = elements.length; i < len; i++) {
                 elements[i].style.color = 'black';
             }
            
         }else{
             var elements = document.getElementsByClassName('navL'), i, len;
+            var bar = document.querySelector(".toggle-sw").style.color = "white"
 
             for (i = 0, len = elements.length; i < len; i++) {
                 elements[i].style.color = 'white';
@@ -397,6 +406,16 @@ The concept of Innovation and Entrepreneurship Development Centre (IEDC) is form
         }
 
     })
+
+    var open = document.getElementById("nav-open").onclick = function(){
+        var nav =document.getElementById("mob-nav").style.transform = " translateX(0)"
+        
+    }
+    var close = document.getElementById("close").onclick = function(){
+        var nav =document.getElementById("mob-nav").style.transform = " translateX(200px)"
+        
+    }
+    
 </script>
 </body>
 </html>
